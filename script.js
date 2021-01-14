@@ -1,9 +1,9 @@
 function encode_page() {
-	var div = document.getElementById("text");
-	if (div == null) {
+	var textinp = document.getElementById("text");
+	if (textinp == null) {
 		return;
 	}
-	var plaintext = div.textContent;
+	var plaintext = textinp.textContent;
 	var ciphertext = btoa(unescape(encodeURIComponent(plaintext)));
 	var inp = document.getElementById("url");
 	if (inp != null) {
@@ -19,8 +19,8 @@ function decode_page() {
 	var url = new URL(document.location);
 	var ciphertext = url.searchParams.get("src");
 	var plaintext = decodeURIComponent(escape(atob(ciphertext)));
-	var div = document.getElementById("text")
-	if (div != null) {
-		div.textContent = plaintext;
+	var textinp = document.getElementById("text");
+	if (textinp != null) {
+		textinp.textContent = plaintext;
 	}
 }

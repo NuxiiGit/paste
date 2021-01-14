@@ -8,7 +8,11 @@
 		<title>Word Host</title>
 	</head>
 	<body>
-		<div id="text"></div>
+		<textarea id="text" rows="4" cols="50">
+main = putStrLn $ let hello = "hello"
+                      world = "world"
+                      in hello ++ " " ++ world
+		</textarea>
 		<hr>
 		<button onclick="encode_page()">share</button>
 		<input id="url" type="text" value="">
