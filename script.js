@@ -3,7 +3,8 @@ function encode_page() {
 	if (textinp == null) {
 		return;
 	}
-	var plaintext = textinp.textContent;
+	var plaintext = textinp.value;
+	console.log(plaintext);
 	var ciphertext = btoa(unescape(encodeURIComponent(plaintext)));
 	var inp = document.getElementById("url");
 	if (inp != null) {
@@ -18,9 +19,13 @@ function encode_page() {
 function decode_page() {
 	var url = new URL(document.location);
 	var ciphertext = url.searchParams.get("src");
+	if (ciphertext == null) {
+		return;
+	}
 	var plaintext = decodeURIComponent(escape(atob(ciphertext)));
 	var textinp = document.getElementById("text");
 	if (textinp != null) {
 		textinp.textContent = plaintext;
+		textinp.value = textinp.textContent;
 	}
 }
