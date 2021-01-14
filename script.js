@@ -5,10 +5,13 @@ function encode_page() {
 	}
 	var plaintext = div.textContent;
 	var ciphertext = btoa(unescape(encodeURIComponent(plaintext)));
-	var span = document.getElementById("url");
-	if (span != null) {
+	var inp = document.getElementById("url");
+	if (inp != null) {
 		var root = window.location.href.split(/[?#]/)[0];
-		span.textContent = `${root}?src=${ciphertext}`;
+		inp.value = `${root}?src=${ciphertext}`;
+		inp.select();
+		inp.setSelectionRange(0, 99999);
+		document.execCommand("copy");
 	}
 }
 
