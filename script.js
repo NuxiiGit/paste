@@ -1,9 +1,14 @@
-function encode_page_to_clipboard() {
+function encode_page() {
 	var div = document.getElementById("text");
-	console.log(div.childNodes);
-	if (div != null && div.childNodes.length == 1) {
-		var src = div.childNodes[0].textContent;
-		return btoa(unescape(encodeURIComponent(src)));
+	if (div == null) {
+		return;
+	}
+	var plaintext = div.textContent;
+	var ciphertext = btoa(unescape(encodeURIComponent(plaintext)));
+	var span = document.getElementById("url");
+	if (span != null) {
+		var root = window.location.href.split(/[?#]/)[0];
+		span.textContent = `${root}?src=${ciphertext}`;
 	}
 }
 
@@ -12,5 +17,7 @@ function decode_page() {
 	var ciphertext = url.searchParams.get("src");
 	var plaintext = decodeURIComponent(escape(atob(ciphertext)));
 	var div = document.getElementById("text")
-	div?.appendChild(document.createTextNode(plaintext));
+	if (div != null) {
+		div.textContent = plaintext;
+	}
 }
