@@ -1,3 +1,3 @@
-# word-host
+# Paste
 
-`word-host` is a simple text hosting service written in vanilla JavaScript.
+`paste` is a simple client-side text hosting application written in vanilla JavaScript.
